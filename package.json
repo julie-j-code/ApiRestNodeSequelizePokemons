@@ -8,7 +8,8 @@
     "start": "nodemon app.js"
   },
   "keywords": [
-    "MySQL",
+    "SQL",
+    "Maria DB",
     "Sequelize",
     "Express",
     "Angular",
@@ -27,6 +28,8 @@
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "mariadb": "^3.0.0",
+    "sequelize": "^6.17.0",
     "serve-favicon": "^2.5.0"
   }
 }

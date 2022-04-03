@@ -2,6 +2,8 @@
 // on récupère le package express
 const express = require('express');
 const res = require('express/lib/response');
+const Sequelize = require('sequelize');
+
 
 // const helper = require('./helper')
 const { success, getUniqueId } = require('./helper')
@@ -13,6 +15,24 @@ const bodyParser = require('body-parser')
 // on crée une instance d'une application expres (serveur web sur lequel fonctionnera l'api rest)
 const app = express();
 const port = 3000;
+const sequelize = new Sequelize('pokedex', 'root', '', {
+  host: 'localhost',
+  dialect: 'mariadb',
+  dialectOptions: {
+    timezone: 'Etc/GMT-2',
+  },
+  logging: false
+})
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(error => {
+    console.error(`Impossible de se connecter à la base. Erreur ${error}`);
+  });
+
 // méthode use pour attacher un middleware à notre api rest avec express
 app
   .use(favicon(__dirname + '/favicon.ico'))
