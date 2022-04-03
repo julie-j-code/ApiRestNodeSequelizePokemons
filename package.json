@@ -1,0 +1,32 @@
+{
+  "name": "node-review",
+  "version": "1.0.0",
+  "description": "Code review based on Node & Sequelize ORM Stack",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "MySQL",
+    "Sequelize",
+    "Express",
+    "Angular",
+    "Node"
+  ],
+  "author": "SD",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "serve-favicon": "^2.5.0"
+  }
+}
