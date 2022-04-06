@@ -2,7 +2,8 @@
 // on récupère le package express
 const express = require('express');
 const res = require('express/lib/response');
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
+const PokemonModel = require('./src/models/pokemon');
 
 
 // const helper = require('./helper')
@@ -32,6 +33,16 @@ sequelize
   .catch(error => {
     console.error(`Impossible de se connecter à la base. Erreur ${error}`);
   });
+
+
+const Pokemon = PokemonModel(sequelize, DataTypes)
+// pour synchroniser la base et le modèle sequelize qu'on a importé 
+sequelize.sync({ force: true }).then(_ => {
+  console.log('La base de donnée a bien été initialisée !')
+})
+
+
+
 
 // méthode use pour attacher un middleware à notre api rest avec express
 app
