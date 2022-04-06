@@ -34,11 +34,19 @@ sequelize
     console.error(`Impossible de se connecter à la base. Erreur ${error}`);
   });
 
-
+// on crée un instancie notre modèle qui dispose de nombreuses fonctions dont create
 const Pokemon = PokemonModel(sequelize, DataTypes)
 // pour synchroniser la base et le modèle sequelize qu'on a importé 
 sequelize.sync({ force: true }).then(_ => {
   console.log('La base de donnée a bien été initialisée !')
+
+  Pokemon.create({
+    name: 'Bulbizzare',
+    hp:25,
+    cp:5,
+    picture:'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png',
+    types:["Plante","Poison"].join()
+  }).then(bulbizzare=>console.log(bulbizzare.toJSON()))
 })
 
 
@@ -89,6 +97,7 @@ app.post('/pokemons/new', (req, res) => {
   const message = `Le pokémon ${pokemonCreated.name} a bien été crée.`
   res.json(success(message, pokemonCreated))
 })
+
 
 app.put('/pokemons/put/:id', (req, res) => {
   const id = parseInt(req.params.id);
