@@ -8,7 +8,7 @@ const PokemonModel = require('./src/models/pokemon');
 
 // const helper = require('./helper')
 const { success, getUniqueId } = require('./helper')
-let pokemons = require('./mock-pokemon')
+const pokemons = require('./mock-pokemon')
 // middleware morgan
 const morgan = require('morgan')
 const favicon = require('serve-favicon')
@@ -40,13 +40,17 @@ const Pokemon = PokemonModel(sequelize, DataTypes)
 sequelize.sync({ force: true }).then(_ => {
   console.log('La base de donnée a bien été initialisée !')
 
-  Pokemon.create({
-    name: 'Bulbizzare',
-    hp:25,
-    cp:5,
-    picture:'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png',
-    types:["Plante","Poison"].join()
-  }).then(bulbizzare=>console.log(bulbizzare.toJSON()))
+  // on itère sur le tableau d'entrée pour synchroniser en base la table
+  pokemons.map((pokemon)=>{
+    Pokemon.create({
+      name: pokemon.name,
+      hp:pokemon.hp,
+      cp:pokemon.cp,
+      picture:pokemon.picture,
+      types:pokemon.types.join()
+    }).then(pokemon=>console.log(pokemon.toJSON()))
+  })
+
 })
 
 
