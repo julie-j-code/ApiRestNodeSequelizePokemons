@@ -21,7 +21,7 @@ const initDb = () => {
         hp: pokemon.hp,
         cp: pokemon.cp,
         picture: pokemon.picture,
-        types: pokemon.types.join()
+        types: pokemon.types
         // la méthode toJSON de sequelize est recommandée pour afficher correctement les instances d'un modèle
       }).then(pokemon => console.log(pokemon.toJSON()))
     })

@@ -23,5 +23,14 @@ app
   sequelize.initDb();
 
   // ici, on placera nos futurs points de terminaison
+  // on aurait pu écrire
+  // const findAllPokemons = require('./src/routes/findAllPokemons')
+  // findAllPokemons(app)
+  // astuce de syntaxe :
+  require('./src/routes/findAllPokemons')(app)
+  require('./src/routes/findPokemonByPk')(app)
+  require('./src/routes/createPokemon')(app)
+  // require('./src/routes/updatePokemon')(app)
+  // require('./src/routes/deletePokemon')(app)
 
 app.listen(port, () => console.log(`Notre application est démarrée sur le port ${port}`));
