@@ -10,6 +10,11 @@ module.exports = (app) => {
       .then(pokemons => {
         const message = 'La liste des pokémons a bien été récupérée.'
         res.json({ message, data: pokemons })
+        // puis on va utiliser la méthode catch() de javascript
+      })
+      .catch(error=>{
+        const message = `La liste des erreurs n'a pas  pu être récupérée, réessayez dans quelques instants`
+        res.status(500).json({message, data:error})
       })
   })
 }
