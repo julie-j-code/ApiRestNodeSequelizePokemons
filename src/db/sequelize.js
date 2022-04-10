@@ -1,7 +1,9 @@
-const {Sequelize, DataTypes} = require('sequelize')
+const { Sequelize, DataTypes } = require('sequelize')
+const bcrypt = require('bcrypt')
 const PokemonModel = require('../models/pokemon')
+const UserModel = require('../models/user')
 const pokemons = require('./mock-pokemon')
-  
+
 const sequelize = new Sequelize('pokedex', 'root', '', {
   host: 'localhost',
   dialect: 'mariadb',
@@ -10,11 +12,13 @@ const sequelize = new Sequelize('pokedex', 'root', '', {
   },
   logging: false
 })
-  
+
 const Pokemon = PokemonModel(sequelize, DataTypes)
-  
+// on instancie le modèle User au près de Sequelize
+const User = UserModel(sequelize, DataTypes)
+
 const initDb = () => {
-  return sequelize.sync({force: true}).then(_ => {
+  return sequelize.sync({ force: true }).then(_ => {
     pokemons.map(pokemon => {
       Pokemon.create({
         name: pokemon.name,
@@ -22,13 +26,19 @@ const initDb = () => {
         cp: pokemon.cp,
         picture: pokemon.picture,
         types: pokemon.types
-        // la méthode toJSON de sequelize est recommandée pour afficher correctement les instances d'un modèle
       }).then(pokemon => console.log(pokemon.toJSON()))
     })
+
+    User.create({
+      username: 'pikachu',
+      password: 'pikachu'
+    }).then(user => console.log(user.toJSON())
+      // la méthode toJSON de sequelize est recommandée pour afficher correctement les instances d'un modèle
+    )
     console.log('La base de donnée a bien été initialisée !')
   })
 }
 //   la fonction initDB permet d'initialiser la base de données et le modèle sequelize PokemonModel
-module.exports = { 
-  initDb, Pokemon
+module.exports = {
+  initDb, Pokemon, User
 }

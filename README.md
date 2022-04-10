@@ -20,7 +20,16 @@ Puis Créer un modèle Sequelize
 src/models/pokemon.js
 ``
 
-### Initialisation
+### Initialisation rappels
+
+`npm install express --save`
+`npm install morgan --save-dev`
+`npm install serve-favicon --save`
+`npm install body-parser --save `
+`npm install sequelize --save `
+`npm install mariadb --save `
+`npm install bcrypt --save`
+`npm install jsonwebtoken --save`
 
 Pour bénéficier d'un opérateur Sequelize :
 `const { Op } = require('sequelize')`
