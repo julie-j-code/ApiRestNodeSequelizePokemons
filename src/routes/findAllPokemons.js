@@ -16,7 +16,9 @@ module.exports = (app) => {
         {
           where: {
             name: {
-              [Op.eq]: name
+              [Op.or]: {
+                [Op.like]: `%${name}%`,
+              }
             }
           }
         }
