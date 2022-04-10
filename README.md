@@ -22,5 +22,6 @@ src/models/pokemon.js
 
 ### Initialisation
 
-A venir...
+Pour bénéficier d'un opérateur Sequelize :
+`const { Op } = require('sequelize')`
 
