@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize')
+const {Sequelize, DataTypes} = require('sequelize')
 const PokemonModel = require('../models/pokemon')
 const pokemons = require('./mock-pokemon')
   
