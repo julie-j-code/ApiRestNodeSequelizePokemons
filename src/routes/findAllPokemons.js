@@ -11,7 +11,7 @@ module.exports = (app) => {
     // exemple de paramètres de requête personnelle
     if (req.query.name) {
       const name = req.query.name;
-      return Pokemon.findAll(
+      return Pokemon.findAndCountAll(
         // {where : {name:name}} sans opérateur sequelize
         {
           where: {
@@ -20,14 +20,15 @@ module.exports = (app) => {
                 [Op.like]: `%${name}%`,
               }
             }
-          }
+          }, limit: 4
         }
       )
 
-        .then(pokemons => {
-          const message = `Il y a ${pokemons.length} pokémons qui correspondent à la recherches.`
-          res.json({ message, data: pokemons })
+        .then(({ count, rows }) => {
+          const message = `Il y a ${count} pokémons qui correspondent au terme de recherche ${name}.`
+          return res.json({ message, data: rows })
         })
+
     }
     else {
       Pokemon.findAll()
