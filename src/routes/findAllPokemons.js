@@ -11,6 +11,13 @@ module.exports = (app) => {
     // exemple de paramètres de requête personnelle
     if (req.query.name) {
       const name = req.query.name;
+      const limit = parseInt(req.query.limit) || 5
+      // pour ne pas se bloquer sur des requêtes à la con !
+      if (name.length < 2) {
+        const message = `Le terme de recherche doit contenir au minimum 2 caractères.`
+        return res.status(400).json({ message })
+      }
+
       return Pokemon.findAndCountAll(
         // {where : {name:name}} sans opérateur sequelize
         {
@@ -22,7 +29,7 @@ module.exports = (app) => {
             }
           },
           order: ['name'],
-          limit: 4
+          limit: limit
         }
       )
 
