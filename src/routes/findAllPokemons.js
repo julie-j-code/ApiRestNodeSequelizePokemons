@@ -20,7 +20,9 @@ module.exports = (app) => {
                 [Op.like]: `%${name}%`,
               }
             }
-          }, limit: 4
+          },
+          order: ['name'],
+          limit: 4
         }
       )
 
@@ -31,7 +33,7 @@ module.exports = (app) => {
 
     }
     else {
-      Pokemon.findAll()
+      Pokemon.findAll({ order: ['name'] })
         .then(pokemons => {
           const message = 'La liste des pokémons a bien été récupérée.'
           res.json({ message, data: pokemons })
