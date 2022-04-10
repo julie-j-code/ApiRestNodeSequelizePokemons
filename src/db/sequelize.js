@@ -29,12 +29,11 @@ const initDb = () => {
       }).then(pokemon => console.log(pokemon.toJSON()))
     })
 
-    User.create({
-      username: 'pikachu',
-      password: 'pikachu'
-    }).then(user => console.log(user.toJSON())
-      // la méthode toJSON de sequelize est recommandée pour afficher correctement les instances d'un modèle
-    )
+
+    bcrypt.hash('pikachu', 10)
+      .then(hash => User.create({ username: 'pikachu', password: hash }))
+      .then(user => console.log(user.toJSON()))
+
     console.log('La base de donnée a bien été initialisée !')
   })
 }
