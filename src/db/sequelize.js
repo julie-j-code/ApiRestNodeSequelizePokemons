@@ -37,7 +37,7 @@ const initDb = () => {
     console.log('La base de donnée a bien été initialisée !')
   })
 }
-//   la fonction initDB permet d'initialiser la base de données et le modèle sequelize PokemonModel
+
 module.exports = {
   initDb, Pokemon, User
 }
