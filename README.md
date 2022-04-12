@@ -49,4 +49,9 @@ Passer express en mode production !
 Ne pas utiliser les dépendances de développement 
 Ici, on a supprimé Morgan qui ne nous servait finalement à rien ainsi que d'autres initialement prévues pour un projet différent. 
 
+### Finalement, finalement... 
+heroku create
+git push heroku main
+heroku logs --tail
+
 

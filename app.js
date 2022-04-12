@@ -9,8 +9,7 @@ app.get('/', (req, res) => {
   return res.json("Hello, Heroku")
 })
 
-// middleware morgan
-const morgan = require('morgan')
+
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser')
 // on crée une instance d'une application expres (serveur web sur lequel fonctionnera l'api rest)
