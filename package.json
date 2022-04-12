@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "NODE_ENV=production node app.js",
+    "dev" : "NODE_ENV=development nodemon app.js"
   },
   "keywords": [
     "SQL",
@@ -18,11 +19,7 @@
   "author": "SD",
   "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
-    "eslint": "^8.12.0",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+"nodemon": "^2.0.15"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

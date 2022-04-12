@@ -4,13 +4,20 @@ const express = require('express');
 // on garde Sequelize en n'utilisant maintenant que les éléments dont nous avons besoin. 
 const sequelize = require('./src/db/sequelize');
 
+// test du déploiement
+app.get('/', (req, res) => {
+  return res.json("Hello, Heroku")
+})
+
 // middleware morgan
 const morgan = require('morgan')
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser')
 // on crée une instance d'une application expres (serveur web sur lequel fonctionnera l'api rest)
 const app = express();
-const port = 3000;
+// très important pour le déploiement sur heroku !!!
+// cela permettra à notre API REST de démarrer sur le bon port, que ce soit sur le web via Heroku ou localement !!!
+const port = process.env.PORT || 3000;
 
 // méthode use pour attacher un middleware à notre api rest avec express
 app
