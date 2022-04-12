@@ -1,26 +1,14 @@
 {
-  "name": "node-review",
+  "name": "express-api-rest",
   "version": "1.0.0",
-  "description": "Code review based on Node & Sequelize ORM Stack",
+  "description": "express-api-rest",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production node app.js",
-    "dev" : "NODE_ENV=development nodemon app.js"
+    "dev": "NODE_ENV=development nodemon app.js"
   },
-  "keywords": [
-    "SQL",
-    "Maria DB",
-    "Sequelize",
-    "Express",
-    "Angular",
-    "Node"
-  ],
-  "author": "SD",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-"nodemon": "^2.0.15"
-  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
@@ -30,5 +18,7 @@
     "mariadb": "^3.0.0",
     "sequelize": "^6.17.0",
     "serve-favicon": "^2.5.0"
-  }
+  },"devDependencies": {
+    "nodemon": "^2.0.15"
+      }
 }
