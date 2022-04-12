@@ -1,7 +1,9 @@
 const { Pokemon } = require('../db/sequelize')
+// notre middleware d'authentification :
+const auth = require('../auth/auth')
   
 module.exports = (app) => {
-  app.get('/api/pokemons/:id', (req, res) => {
+  app.get('/api/pokemons/:id', auth, (req, res) => {
     //   plus besoin de la méthode  parseInt
     Pokemon.findByPk(req.params.id)
       .then(pokemon => {

@@ -2,7 +2,7 @@
 // on importe le modèle
 const { Pokemon } = require('../db/sequelize')
 const { Op } = require('sequelize')
-// notre middleweare d'authentification :
+// notre middleware d'authentification :
 const auth = require('../auth/auth')
 
 // on exporte une fonction qui prend en paramètre notre application !
