@@ -30,6 +30,7 @@ src/models/pokemon.js
 `npm install mariadb --save `
 `npm install bcrypt --save`
 `npm install jsonwebtoken --save`
+`npm install cors --save` 
 
 Pour bénéficier d'un opérateur Sequelize :
 `const { Op } = require('sequelize')`
